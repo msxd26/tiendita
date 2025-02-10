@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+
+  db:
+    image: mysql:oraclelinux9
+    restart: always
+    container_name: "gestion-usuario"
+    environment:
+      MYSQL_DATABASE: "gestion_usuarios"
+      MYSQL_ROOT_PASSWORD: "superroot"
+      MYSQL_USER: "jsaire"
+      MYSQL_PASSWORD: "secret"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+
