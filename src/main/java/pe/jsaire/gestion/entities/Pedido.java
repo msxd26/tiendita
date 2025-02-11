@@ -35,7 +35,24 @@ public class Pedido {
 
     @PrePersist
     public void prePersist() {
+
         this.fecha = LocalDate.now();
     }
 
+    public BigDecimal calcularTotal() {
+        return detalles.stream().map(DetallePedido::getPrecio).
+                reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public void addPedidoDetalle(DetallePedido detalle) {
+        this.detalles.add(detalle);
+        detalle.setPedido(this);
+        this.total = calcularTotal();
+    }
+
+    public void removePedidoDetalle(DetallePedido detalle) {
+        detalles.remove(detalle);
+        detalle.setPedido(null);
+        this.total = calcularTotal();
+    }
 }

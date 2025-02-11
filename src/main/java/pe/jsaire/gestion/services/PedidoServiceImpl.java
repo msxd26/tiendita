@@ -36,8 +36,6 @@ public class PedidoServiceImpl implements PedidoService {
         return convertToDto(repository.findById(id).orElseThrow());
     }
 
-
-
     @Override
     public PedidoDTO save(PedidoDTO entity) {
 
@@ -71,6 +69,27 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setFecha(LocalDate.now());
 
         pedido = repository.save(pedido);
+
+        return convertToDto(pedido);
+    }
+
+    @Override
+    public PedidoDTO addPedido(Integer idPedido, Integer idProducto, Integer cantidad) {
+
+        var pedido = repository.findById(idPedido).orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
+
+        var producto = productoRepository.findById(idProducto).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        DetallePedido detalle = new DetallePedido();
+        detalle.setProducto(producto);
+        detalle.setCantidad(cantidad);
+        detalle.setPrecio(producto.getPrecio());
+
+        detalle.setPedido(pedido);
+
+        pedido.addPedidoDetalle(detalle);
+
+        repository.save(pedido);
 
         return convertToDto(pedido);
     }

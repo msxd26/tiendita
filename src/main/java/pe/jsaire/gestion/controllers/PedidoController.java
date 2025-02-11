@@ -31,4 +31,15 @@ public class PedidoController {
     public ResponseEntity<?> create(@RequestBody PedidoDTO pedidoDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.save(pedidoDTO));
     }
+
+    @PutMapping("{id}/addProducto/{idProducto}")
+    public ResponseEntity<?> addProducto(@PathVariable Integer id,@PathVariable Integer idProducto ,@RequestParam Integer cantidad) {
+        try {
+            PedidoDTO updatedPedido = pedidoService.addPedido(id, idProducto, cantidad);
+
+            return ResponseEntity.status(HttpStatus.OK).body(updatedPedido);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 }
