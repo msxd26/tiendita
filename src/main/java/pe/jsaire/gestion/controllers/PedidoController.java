@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.jsaire.gestion.dto.PedidoDTO;
+import pe.jsaire.gestion.entities.Pedido;
 import pe.jsaire.gestion.services.PedidoService;
 
 @RestController
@@ -42,4 +43,12 @@ public class PedidoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
+    @PutMapping("{id}/removeProducto/{idProducto}")
+    public ResponseEntity<?>removeProducto(@PathVariable Integer id,@PathVariable Integer idProducto) {
+
+        PedidoDTO updatePedido= pedidoService.removePedidoDetalle(id,idProducto);
+        return ResponseEntity.status(HttpStatus.OK).body(updatePedido);
+    }
+
 }

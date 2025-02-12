@@ -95,6 +95,43 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
+    public PedidoDTO removePedidoDetalle(Integer idPedido, Integer idProducto) {
+
+
+        var pedido = repository.findById(idPedido).orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
+        var producto = productoRepository.findById(idProducto).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+
+        DetallePedido detalleEliminar = null;
+
+
+        for (DetallePedido detalle : pedido.getDetalles()) {
+            if (detalle.getProducto().getId().equals(idProducto)) {
+                detalleEliminar = detalle;
+                break;
+            }
+        }
+
+        pedido.removePedidoDetalle(detalleEliminar);
+
+        repository.save(pedido);
+
+        /*
+        DetallePedido detalleAEliminar = pedido.getDetalles().stream()
+                .filter(detalle -> detalle.getProducto().getId().equals(idProducto))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Detalle no encontrado"));
+
+        pedido.removePedidoDetalle(detalleAEliminar);
+
+        */
+        repository.save(pedido);
+
+        return convertToDto(pedido);
+    }
+
+
+    @Override
     public void delete(Integer id) {
         Pedido entity = repository.findById(id).orElseThrow();
         repository.delete(entity);
