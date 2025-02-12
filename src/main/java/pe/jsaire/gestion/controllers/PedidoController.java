@@ -33,7 +33,7 @@ public class PedidoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(pedidoService.save(pedidoDTO));
     }
 
-    @PutMapping("{id}/addProducto/{idProducto}")
+    @PatchMapping("{id}/addProducto/{idProducto}")
     public ResponseEntity<?> addProducto(@PathVariable Integer id,@PathVariable Integer idProducto ,@RequestParam Integer cantidad) {
         try {
             PedidoDTO updatedPedido = pedidoService.addPedido(id, idProducto, cantidad);
