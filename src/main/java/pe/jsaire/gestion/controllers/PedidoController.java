@@ -44,7 +44,7 @@ public class PedidoController {
         }
     }
 
-    @PutMapping("{id}/removeProducto/{idProducto}")
+    @PatchMapping("{id}/removeProducto/{idProducto}")
     public ResponseEntity<?>removeProducto(@PathVariable Integer id,@PathVariable Integer idProducto) {
 
         PedidoDTO updatePedido= pedidoService.removePedidoDetalle(id,idProducto);

@@ -31,6 +31,4 @@ public class ProductoController {
         productoService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-
 }
