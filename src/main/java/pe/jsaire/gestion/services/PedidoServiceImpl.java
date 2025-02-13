@@ -99,7 +99,6 @@ public class PedidoServiceImpl implements PedidoService {
 
 
         var pedido = repository.findById(idPedido).orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
-        var producto = productoRepository.findById(idProducto).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
 
 
         DetallePedido detalleEliminar = null;

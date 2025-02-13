@@ -1,6 +1,8 @@
 package pe.jsaire.gestion.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,4 +33,12 @@ public class ProductoController {
         productoService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+
+    @GetMapping("/all")
+    public ResponseEntity<Page<?>> findAll(@RequestParam(required = false) String field,
+                                        @RequestParam(required = true) Integer page){
+        return ResponseEntity.status(HttpStatus.OK).body(productoService.findAll(field, page));
+    }
+
 }
