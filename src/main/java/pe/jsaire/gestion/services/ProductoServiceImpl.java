@@ -38,9 +38,6 @@ public class ProductoServiceImpl implements ProductoService{
     @Override
     public Page<ProductoDTO> findAll(String field, Integer page) {
         Pageable pageable = PageRequest.of(page, PAGE_SIZE);
-
-
-
         Page<Producto> productos= productoRepository.findAll(pageable);
 
         return productos.map(this::convertToDto);
@@ -48,9 +45,8 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     public void delete(Integer id) {
-        var producto = findById(id);
-        productoRepository.deleteById(id);
-
+        var producto = productoRepository.findById(id).orElseThrow();
+        productoRepository.delete(producto);
     }
 
     private ProductoDTO convertToDto(Producto entity) {
