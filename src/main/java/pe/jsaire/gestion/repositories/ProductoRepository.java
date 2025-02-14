@@ -8,4 +8,7 @@ import pe.jsaire.gestion.entities.Producto;
 public interface ProductoRepository extends GenericRepository<Producto, Integer> {
 
     Page<Producto> findAll(Pageable pageable);
+
+    Producto findByNombre(String nombre);
+
 }

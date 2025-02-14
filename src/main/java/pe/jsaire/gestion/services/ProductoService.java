@@ -7,5 +7,7 @@ import pe.jsaire.gestion.dto.ProductoDTO;
 
 
 public interface ProductoService extends CrudService<ProductoDTO, Integer> {
-    Page<ProductoDTO> findAll(String field, Integer page);
+    Page<ProductoDTO> findAll(String field, Integer page, Boolean desc);
+    ProductoDTO findByName(String name);
+
 }

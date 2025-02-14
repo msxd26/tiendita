@@ -37,9 +37,14 @@ public class ProductoController {
 
     @GetMapping("/all")
     public ResponseEntity<Page<?>> findAll(@RequestParam(required = false) String field,
-                                        @RequestParam(required = true) Integer page){
-        return ResponseEntity.status(HttpStatus.OK).body(productoService.findAll(field, page));
+                                        @RequestParam(required = false) Boolean desc,
+                                        @RequestParam Integer page){
+        return ResponseEntity.status(HttpStatus.OK).body(productoService.findAll(field, page, desc));
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<?> findName(@RequestParam String name){
+        return ResponseEntity.status(HttpStatus.OK).body(productoService.findByName(name));
+    }
 
 }

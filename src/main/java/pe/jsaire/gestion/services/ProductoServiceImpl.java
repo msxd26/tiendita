@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pe.jsaire.gestion.dto.ProductoDTO;
 import pe.jsaire.gestion.entities.Producto;
@@ -36,11 +37,16 @@ public class ProductoServiceImpl implements ProductoService{
     }
 
     @Override
-    public Page<ProductoDTO> findAll(String field, Integer page) {
-        Pageable pageable = PageRequest.of(page, PAGE_SIZE);
-        Page<Producto> productos= productoRepository.findAll(pageable);
+    public Page<ProductoDTO> findAll(String field, Integer page , Boolean desc) {
+
+        Page<Producto> productos= productoRepository.findAll(PageRequest.of(page, PAGE_SIZE));
 
         return productos.map(this::convertToDto);
+    }
+
+    @Override
+    public ProductoDTO findByName(String name) {
+        return convertToDto(productoRepository.findByNombre(name));
     }
 
     @Override
