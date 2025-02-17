@@ -1,4 +1,4 @@
-package pe.jsaire.gestion.utils;
+package pe.jsaire.gestion.validations;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -10,10 +10,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})
-@Constraint(validatedBy = RequiredNumberValidation.class)
-public @interface isRequiredNumber {
+@Constraint(validatedBy = RequiredValidation.class)
+public @interface isRequired {
 
-    String message() default "BigDeciamal requerido usando anotaciones";
+    String message() default "Es requerido usando anotaciones";
 
     Class<?>[] groups() default {};
 

@@ -2,16 +2,12 @@ package pe.jsaire.gestion.controllers;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pe.jsaire.gestion.dto.ProductoDTO;
-import pe.jsaire.gestion.entities.Producto;
 import pe.jsaire.gestion.services.ProductoService;
-import pe.jsaire.gestion.utils.ProductoValidation;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -4,8 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pe.jsaire.gestion.utils.isRequired;
-import pe.jsaire.gestion.utils.isRequiredNumber;
+import pe.jsaire.gestion.validations.isRequired;
 
 import java.math.BigDecimal;
 

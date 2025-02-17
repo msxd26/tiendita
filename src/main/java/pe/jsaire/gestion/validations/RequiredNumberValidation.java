@@ -1,4 +1,4 @@
-package pe.jsaire.gestion.utils;
+package pe.jsaire.gestion.validations;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

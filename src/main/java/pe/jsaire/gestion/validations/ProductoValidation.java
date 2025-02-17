@@ -1,11 +1,9 @@
-package pe.jsaire.gestion.utils;
+package pe.jsaire.gestion.validations;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import pe.jsaire.gestion.dto.ProductoDTO;
-import pe.jsaire.gestion.entities.Producto;
 
 
 @Component

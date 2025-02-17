@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pe.jsaire.gestion.utils.isRequiredNumber;
+import pe.jsaire.gestion.validations.isRequiredNumber;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

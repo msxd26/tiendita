@@ -124,7 +124,6 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.removePedidoDetalle(detalleAEliminar);
 
         */
-        repository.save(pedido);
 
         return convertToDto(pedido);
     }

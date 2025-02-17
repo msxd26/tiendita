@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import pe.jsaire.gestion.dto.ProductoDTO;
 import pe.jsaire.gestion.entities.Producto;
 import pe.jsaire.gestion.repositories.ProductoRepository;
+import pe.jsaire.gestion.exceptions.ProductoNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +25,7 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     public ProductoDTO findById(Integer id) {
-        Producto producto = productoRepository.findById(id).orElseThrow();
+        Producto producto = productoRepository.findById(id).orElseThrow( () -> new ProductoNotFoundException("Producto no encontrado") );
         return convertToDto(producto);
     }
 
